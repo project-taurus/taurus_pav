@@ -1,0 +1,295 @@
+ __________________________________________________________ 
+|                                                          |
+|  (______)                                                |
+|  <(0  0)>   TAURUS_vap, version 2022.05.08               |
+|    (°°)                                                  |
+|                                                          |
+| This code performs the particle-number variation after   |
+| projection of real general Bogoliubov quasi-particle     |
+| states represented in a spherical harmonic oscillator    |
+| basis.                                                   |
+|                                                          |
+| Licence: GNU General Public License version 3 or later   |
+| DOI: https://doi.org/10.5281/zenodo.6906647              |
+| Git: https://github.com/project-taurus/taurus_pav.git    |
+|                                                          |
+| Contributors: B. Bally, T. Rodríguez, A. Sánchez-F.      |
+|__________________________________________________________|
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                      INPUT PARAMETERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Interaction                   
+-----------                   
+Master name hamil. files      usdb
+Center-of-mass correction     0
+Read reduced hamiltonian      0
+No. of MPI proc per H team    0    
+                              
+Particle Number               
+---------------               
+Number of active protons      4.00      
+Number of active neutrons     4.00      
+No. of gauge angles protons   1    
+No. of gauge angles neutrons  1    
+                              
+Wave Function                 
+-------------                 
+Type of seed wave function    0
+Number of QP to block         0    
+No symmetry simplifications   0
+Seed random number generation 0    
+Read/write wf file as text    0
+Cutoff occupied s.-p. states  0.000E+00 
+Include all empty sp states   0
+Spatial one-body density      0
+Discretization for x/r        0   0.00 
+Discretization for y/theta    0   0.00 
+Discretization for z/phi      0   0.00 
+                              
+Iterative Procedure           
+-------------------           
+Maximum no. of iterations     1000 
+Step intermediate wf writing  0    
+More intermediate printing    0
+Type of gradient              1
+Parameter eta for gradient    1.000E-01 
+Parameter mu  for gradient    3.000E-01 
+Tolerance for gradient        1.000E-02 
+                              
+Constraints                   
+-----------                   
+Force constraint N/Z          1
+Constraint beta_lm            2
+Pair coupling scheme          1
+Tolerance for constraints     1.000E-06 
+Constraint multipole Q10      0   0.000
+Constraint multipole Q11      0   0.000
+Constraint multipole Q20      1   0.280
+Constraint multipole Q21      2   0.000   0.000
+Constraint multipole Q22      1  12.000
+Constraint multipole Q30      0   0.000
+Constraint multipole Q31      0   0.000
+Constraint multipole Q32      0   0.000
+Constraint multipole Q33      0   0.000
+Constraint multipole Q40      0   0.000
+Constraint multipole Q41      0   0.000
+Constraint multipole Q42      0   0.000
+Constraint multipole Q43      0   0.000
+Constraint multipole Q44      0   0.000
+Constraint radius sqrt(r^2)   0   0.000
+Constraint ang. mom. Jx       0   0.000
+Constraint ang. mom. Jy       0   0.000
+Constraint ang. mom. Jz       0   0.000
+Constraint pair P_T00_J10     0   0.000
+Constraint pair P_T00_J1m1    0   0.000
+Constraint pair P_T00_J1p1    0   0.000
+Constraint pair P_T10_J00     0   0.000
+Constraint pair P_T1m1_J00    0   0.000
+Constraint pair P_T1p1_J00    0   0.000
+Constraint field Delta        0   0.000
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                           NUCLEUS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Part \ No.     Z          N          A
+----------------------------------------
+Valence       4.00       4.00       8.00
+Core          8.00       8.00      16.00
+Nucleus      12.00      12.00      24.00
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          HO BASIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    Quantity          Value
+---------------------------
+No. of sp states        24
+Max. value of N          2
+Max. value of l          2
+Max. value of 2j         5
+hbar*omega (MeV)    12.596
+Osc. length b (fm)   1.815
+No. of shells            3
+List of shells         205   1001    203
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                         HAMILTONIAN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   Description        Value
+---------------------------
+Main name of files    usdb
+Name of hamiltonian   USDB (Brown.2006.PRC.74.034315)
+Type of hamiltonian     1   (ANTOINE, spe_p==spe_n)
+Read from file          0   (normal)
+Number of 2BME        1396        
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        WAVE FUNCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   Description         Value
+----------------------------
+Initial type of seed     0   (general, unrestricted)
+Number of qp blocked     0
+Total number parity      1
+No. of fully occ. sp     0
+
+  Symmetry       ?      Mean              Action
+----------------------------------------------------------
+Separate N/Z     no               
+Good Z           no    4.13264    
+Good N           no    3.86736    
+Good P          yes    1.00000
+Good Jz          no   -0.67825
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                   ITERATIVE MINIMIZATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+Iteration     Gradient       Energy      Protons    Var(Prot)    Neutrons   Var(Neut)
+-------------------------------------------------------------------------------------
+     1      1.00986E+01    -62.763289    4.000000    1.162475    4.000000    1.030395
+     2      1.49192E+01    -73.448885    4.000000    0.784002    4.000000    0.743078
+     3      8.22735E+00    -79.361285    4.000000    0.178341    4.000000    0.180866
+     4      4.12106E+00    -80.126643    4.000000    0.105675    4.000000    0.079597
+     5      2.87780E+00    -80.591112    4.000000    0.051802    4.000000    0.044373
+     6      1.75773E+00    -80.842948    4.000000    0.018060    4.000000    0.016712
+     7      9.30504E-01    -80.922986    4.000000    0.006534    4.000000    0.006130
+     8      4.77505E-01    -80.942562    4.000000    0.003016    4.000000    0.002871
+     9      2.55068E-01    -80.947579    4.000000    0.001746    4.000000    0.001670
+    10      1.61529E-01    -80.949346    4.000000    0.001155    4.000000    0.001099
+    11      1.21573E-01    -80.950215    4.000000    0.000809    4.000000    0.000772
+    12      9.76901E-02    -80.950738    4.000000    0.000579    4.000000    0.000555
+    13      7.97962E-02    -80.951081    4.000000    0.000417    4.000000    0.000403
+    14      6.58246E-02    -80.951312    4.000000    0.000304    4.000000    0.000296
+    15      5.48830E-02    -80.951471    4.000000    0.000225    4.000000    0.000219
+    16      4.61985E-02    -80.951583    4.000000    0.000168    4.000000    0.000164
+    17      3.92080E-02    -80.951663    4.000000    0.000126    4.000000    0.000124
+    18      3.35083E-02    -80.951720    4.000000    0.000096    4.000000    0.000094
+    19      2.88047E-02    -80.951763    4.000000    0.000073    4.000000    0.000072
+    20      2.48813E-02    -80.951794    4.000000    0.000056    4.000000    0.000055
+    21      2.15789E-02    -80.951818    4.000000    0.000043    4.000000    0.000043
+    22      1.87781E-02    -80.951836    4.000000    0.000033    4.000000    0.000033
+    23      1.63872E-02    -80.951849    4.000000    0.000026    4.000000    0.000026
+    24      1.43394E-02    -80.951859    4.000000    0.000020    4.000000    0.000020
+    25      1.25748E-02    -80.951867    4.000000    0.000016    4.000000    0.000016
+    26      1.10443E-02    -80.951873    4.000000    0.000012    4.000000    0.000012
+    27      9.71166E-03    -80.951878    4.000000    0.000009    4.000000    0.000009
+
+Calculation converged
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+               QUASIPARTICLE STATE PROPERTIES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Label of the state: 809518780898836608
+
+      Quantity            Mean      Variance
+--------------------------------------------
+Norm                   1.0000000
+Number of protons      4.0000000   0.0000095
+Number of neutrons     4.0000000   0.0000094
+Parity                 1.0000000
+
+ENERGY DECOMPOSITION
+====================
+
+Part \ Iso      p-p          n-n          p-n          Total
+-------------------------------------------------------------
+Zero-body                                            0.000000
+One-body    -12.849733   -12.849733                -25.699466
+ ph part    -27.626182   -27.626182     0.000000   -55.252364
+ pp part     -0.000000    -0.000000    -0.000048    -0.000048
+Two-body    -27.626182   -27.626182    -0.000048   -55.252412
+Full H      -40.475915   -40.475915    -0.000048   -80.951878
+
+MULTIPOLE DEFORMATIONS
+======================
+                                     Nucleons
+Q_lm     Protons    Neutrons   Isoscalar   Isovector
+----------------------------------------------------
+Q_10    0.000000    0.000000    0.000000    0.000000
+Q_11    0.000000    0.000000    0.000000    0.000000
+Q_20    9.400661    9.400661   18.801321    0.000000
+Q_21    0.000000    0.000000    0.000000   -0.000000
+Q_22    1.412921    1.412921    2.825842   -0.000000
+Q_30    0.000000    0.000000    0.000000    0.000000
+Q_31    0.000000    0.000000    0.000000    0.000000
+Q_32    0.000000    0.000000    0.000000    0.000000
+Q_33    0.000000    0.000000    0.000000    0.000000
+Q_40   -4.679814   -4.679814   -9.359628   -0.000000
+Q_41    0.000008    0.000008    0.000016   -0.000000
+Q_42   24.784892   24.784892   49.569783    0.000000
+Q_43    0.000001    0.000001    0.000003   -0.000000
+Q_44    0.135619    0.135619    0.271238   -0.000000
+
+                                        Nucleons
+Beta_lm     Protons    Neutrons   Isoscalar   Isovector
+-------------------------------------------------------
+Beta_10    0.000000    0.000000    0.000000    0.000000
+Beta_11    0.000000    0.000000    0.000000    0.000000
+Beta_20    0.434759    0.434759    0.273881    0.000000
+Beta_21    0.000000    0.000000    0.000000   -0.000000
+Beta_22    0.065344    0.065344    0.041164   -0.000000
+Beta_30    0.000000    0.000000    0.000000    0.000000
+Beta_31    0.000000    0.000000    0.000000    0.000000
+Beta_32    0.000000    0.000000    0.000000    0.000000
+Beta_33    0.000000    0.000000    0.000000    0.000000
+Beta_40   -0.028675   -0.028675   -0.011380   -0.000000
+Beta_41    0.000000    0.000000    0.000000   -0.000000
+Beta_42    0.151866    0.151866    0.060268    0.000000
+Beta_43    0.000000    0.000000    0.000000   -0.000000
+Beta_44    0.000831    0.000831    0.000330   -0.000000
+
+                                        Nucleons
+Triaxial    Protons    Neutrons   Isoscalar   Isovector
+-------------------------------------------------------
+Beta       0.444472    0.444472    0.280000    0.000000
+Gamma     12.000001   12.000001   12.000001  338.634520
+
+RADIUS
+======
+                                        Nucleons
+Quantity    Protons    Neutrons   Isoscalar   Isovector     Charge
+-------------------------------------------------------------------
+  r        3.394620    3.394620    3.394620    0.000000    3.492448
+  r^2     11.523444   11.523444   11.523444    0.000000   12.197194
+
+Warning: no center-of-mass correction.
+
+ANGULAR MOMENTUM
+================
+
+  i        J_i         J_i^2     Var(J_i)
+-----------------------------------------
+  X     -0.000003    9.603024    9.603024
+  Y      0.000000    7.143535    7.143535
+  Z     -0.000001    1.418185    1.418185
+Total               18.164743
+
+PAIR COUPLING
+=============
+
+   MJ or MT =       -1           0          +1
+-------------------------------------------------
+T = 0 ; J = 1    0.000874    0.001202    0.000320
+T = 1 ; J = 0    0.000170    0.000457    0.000013
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    COMPLEMENTARY FILES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+     Description                 File
+--------------------------------------------
+ Occupation numbers : occupation_numbers.dat
+ Canonical basis    : canonicalbasis.dat
+ Eigenbasis h       : eigenbasis_h.dat
+ Eigenbasis H11     : eigenbasis_H11.dat
+ Final wave function: final_wf.bin
+ Reduced hamiltonian: usdb.red
+
+This is the end, my only friend, the end.

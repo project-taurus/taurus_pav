@@ -1,0 +1,7 @@
+wrk/
+exe/ 
+src/obj/
+src/mod/ 
+extras/*aux    
+extras/*log    
+extras/*out    

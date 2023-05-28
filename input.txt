@@ -1,0 +1,40 @@
+Interaction
+-----------
+Master name hamil. files      usdb
+Center-of-mass correction     0
+Read reduced hamiltonian      0
+No. of MPI proc per H team    0
+
+Miscellaneous      
+------------- 
+Physics case studied          0
+Part of the calc. performed   0
+Read mat. elem. of operators  0
+Write/read rotated mat. elem. 1
+Cutoff for rotated overlaps   0.000E-00
+Read wavefunctions as text    0
+Cutoff occupied s.-p. states  0.000E-00
+Include all empty sp states   0
+
+Particle Number
+---------------
+Number of active protons      4   
+Number of active neutrons     5     
+No. gauge angles: protons     5
+No. gauge angles: neutrons    5
+No. gauge angles: nucleons    0
+Disable simplifications NZA   0
+
+Angular Momentum
+----------------
+Minimum angular momentum 2J   1
+Maximum angular momentum 2J   7 
+No. Euler angles: alpha       20
+No. Euler angles: beta        10 
+No. Euler angles: gamma       20
+Disable simplifications JMK   0
+
+Parity
+------
+Projection on parity P        0
+Disable simplifications P     0
