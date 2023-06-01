@@ -18,8 +18,8 @@ implicit none
 public
 
 !!! Factors for proton/neutron/matter depending on com corrections or not
-real(r64), dimension(6) :: radius_fac1b ! one-body
-real(r64), dimension(3,-1:1) :: radius_fac2b ! two-body
+real(r64), dimension(3,-1:1) :: radius_fac1b, & ! one-body
+                                radius_fac2b    ! two-body
 
 !!! Matrix elements in m-scheme (HO basis)  
 complex(r64), dimension(:,:), allocatable :: radius_r2p, & ! r^2 protons  (1b)
@@ -67,12 +67,12 @@ radius_r2p = zzero
 radius_r2n = zzero
 
 !!! Factors 
-radius_fac1b(1) = one / valence_Z 
-radius_fac1b(2) = zero
-radius_fac1b(3) = zero
-radius_fac1b(4) = one / valence_N
-radius_fac1b(5) = one / valence_A
-radius_fac1b(6) = one / valence_A
+radius_fac1b(1,-1) = one / valence_Z 
+radius_fac1b(1,+1) = zero
+radius_fac1b(2,-1) = zero
+radius_fac1b(2,+1) = one / valence_N
+radius_fac1b(3,-1) = one / valence_A
+radius_fac1b(3,+1) = one / valence_A
 
 !!! Reads the one-body part from a file
 if ( opt_oper == 1 ) then 
@@ -121,31 +121,32 @@ if ( opt_oper == 1 ) then
   if ( is_exist ) then
     is_r1r2 = .true.
 
-    !!! Sets the factors
-    radius_fac1b(1) = ( valence_A * (valence_A - 2) + valence_Z ) * one / &
-                      ( valence_Z * valence_A**2 ) 
-    radius_fac1b(2) = one / ( valence_A**2 ) 
-    radius_fac1b(3) = one / ( valence_A**2 ) 
-    radius_fac1b(4) = ( valence_A * (valence_A - 2) + valence_N ) * one / &
-                      ( valence_N * valence_A**2 ) 
-    radius_fac1b(5) = ( valence_A - 1 ) * one / ( valence_A**2 ) 
-    radius_fac1b(6) = ( valence_A - 1 ) * one / ( valence_A**2 ) 
+    !!! Sets the factors: 1-body
+    radius_fac1b(1,-1) = ( valence_A * (valence_A - 2) + valence_Z ) * one / &
+                      ( valence_Z ) 
+    radius_fac1b(1,+1) = one 
+    radius_fac1b(2,-1) = one 
+    radius_fac1b(2,+1) = ( valence_A * (valence_A - 2) + valence_N ) * one / &
+                      ( valence_N ) 
+    radius_fac1b(3,-1) = ( valence_A - 1 ) * one
+    radius_fac1b(3,+1) = ( valence_A - 1 ) * one
 
-    radius_fac2b(1,-1) = -( 2*valence_A - valence_Z ) * one / & 
-                         ( valence_Z * valence_A**2)
-    radius_fac2b(2,-1) = + one / ( valence_A**2)
-    radius_fac2b(3,-1) = - one / ( valence_A**2)
+    radius_fac1b = radius_fac1b / ( valence_A**2)
+
+    !!! Sets the factors: 2-body
+    radius_fac2b(1,-1) = -( 2*valence_A - valence_Z ) * one / ( valence_Z )
+    radius_fac2b(2,-1) = + one
+    radius_fac2b(3,-1) = - one
                         
-    radius_fac2b(1, 0) = -( valence_A - valence_Z ) * one / & 
-                         ( valence_Z * valence_A**2)
-    radius_fac2b(2, 0) = -( valence_A - valence_N ) * one / & 
-                         ( valence_N * valence_A**2)
-    radius_fac2b(3, 0) = - one / ( valence_A**2)
+    radius_fac2b(1, 0) = -( valence_A - valence_Z ) * one / ( valence_Z )
+    radius_fac2b(2, 0) = -( valence_A - valence_N ) * one / ( valence_N )
+    radius_fac2b(3, 0) = - one
                         
-    radius_fac2b(1,+1) = + one / ( valence_A**2)
-    radius_fac2b(2,+1) = -( 2*valence_A - valence_N ) * one / & 
-                         ( valence_N * valence_A**2)
-    radius_fac2b(3,+1) = - one / ( valence_A**2)
+    radius_fac2b(1,+1) = + one 
+    radius_fac2b(2,+1) = -( 2*valence_A - valence_N ) * one / ( valence_N )
+    radius_fac2b(3,+1) = - one 
+
+    radius_fac2b = radius_fac2b * 2 * hbarmass / ( HO_hw * valence_A**2 )
 
     !!! Sets the fields
     allocate( radius_gammaLR(3,HOsp_dim,HOsp_dim), &
@@ -206,9 +207,9 @@ do i = 1, hdim
   ra2n_bare = ra2n_bare + A2(i,i)
 enddo             
 
-ra2p = radius_fac1b(1) * ra2p_bare + radius_fac1b(2) * ra2n_bare
-ra2n = radius_fac1b(3) * ra2p_bare + radius_fac1b(4) * ra2n_bare
-ra2m = radius_fac1b(5) * ra2p_bare + radius_fac1b(6) * ra2n_bare
+ra2p = radius_fac1b(1,-1) * ra2p_bare + radius_fac1b(1,+1) * ra2n_bare
+ra2n = radius_fac1b(2,-1) * ra2p_bare + radius_fac1b(2,+1) * ra2n_bare
+ra2m = radius_fac1b(3,-1) * ra2p_bare + radius_fac1b(3,+1) * ra2n_bare
 
 !!! Two-body part
 if ( is_r1r2 ) then
