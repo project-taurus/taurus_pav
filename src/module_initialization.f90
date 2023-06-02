@@ -37,7 +37,7 @@ subroutine print_version
 print '(" __________________________________________________________ ",/, &
       & "|                                                          |",/, &
       & "|  (______)                                                |",/, &
-      & "|  <(0  0)>   TAURUS_pav, version 2023.05.28               |",/, &
+      & "|  <(0  0)>   TAURUS_pav, version 2023.06.02               |",/, &
       & "|    (°°)                                                  |",/, &
       & "|                                                          |",/, &
       & "| This code performs the symmetry projections (N,Z,J,MJ,P) |",/, &
@@ -267,9 +267,9 @@ call print_input
 !cmpi endif
 call check_input
 call open_file_sho
-if ( misc_phys == 0 ) then
-  call open_files_hamiltonian
-endif
+call open_files_hamiltonian 
+if ( misc_phys == 0 ) call open_files_hamiltonian
+if ( misc_oper == 1 ) call detect_files_operators
 
 end subroutine read_input
 
@@ -837,6 +837,51 @@ endif
 if ( iwarn /= 0 ) print*,' '
 
 end subroutine open_files_hamiltonian
+
+!------------------------------------------------------------------------------!
+! subroutine detect_files_operators                                            !
+!                                                                              !
+! Detects if the files containing the matrx elements of various operators exist!
+! or not. This routine is for diagnositic purposes only and does not perform   !
+! any action.                                                                  !
+!------------------------------------------------------------------------------!
+subroutine detect_files_operators
+
+integer :: i
+character(27) :: namefile
+logical :: is_exist
+
+!!! Multipoles 
+do i = 1, 5
+  select case (i)
+    case(1)
+      namefile = "matelem_multipole_Q1_1b.bin"
+    case(2)
+      namefile = "matelem_multipole_Q2_1b.bin"
+    case(3)
+      namefile = "matelem_multipole_Q3_1b.bin"
+    case(4)
+      namefile = "matelem_multipole_M1_1b.bin"
+    case(5)
+      namefile = "matelem_multipole_M2_1b.bin"
+    case default
+      cycle
+  end select
+
+  inquire(file=namefile, exist=is_exist)
+  if ( is_exist ) print "(a,a)", "Matrix elements taken from:", namefile
+enddo
+
+!!! Radius
+inquire(file="matelem_radius_r2_1b.bin", exist=is_exist)
+if ( is_exist ) print "(a)", "Matrix elements taken from: &
+                             &matelem_radius_r2_1b.bin"
+
+inquire(file="matelem_radius_r1r2_2b.bin", exist=is_exist)
+if ( is_exist ) print "(a)", "Matrix elements taken from: &
+                             &matelem_radius_r1r2_2b.bin"
+
+end subroutine detect_files_operators
 
 END MODULE Initialization
 !==============================================================================!
