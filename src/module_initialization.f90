@@ -847,9 +847,11 @@ end subroutine open_files_hamiltonian
 !------------------------------------------------------------------------------!
 subroutine detect_files_operators
 
-integer :: i
+integer :: i, j 
 character(27) :: namefile
 logical :: is_exist
+
+j = 0
 
 !!! Multipoles 
 do i = 1, 5
@@ -869,17 +871,26 @@ do i = 1, 5
   end select
 
   inquire(file=namefile, exist=is_exist)
-  if ( is_exist ) print "(a,a)", "Matrix elements taken from:", namefile
+  if ( is_exist ) then 
+    print "(a,a)", "Matrix elements taken from:", namefile
+    j = j + 1
+  endif
 enddo
 
 !!! Radius
 inquire(file="matelem_radius_r2_1b.bin", exist=is_exist)
-if ( is_exist ) print "(a)", "Matrix elements taken from: &
-                             &matelem_radius_r2_1b.bin"
+if ( is_exist ) then 
+  print "(a)", "Matrix elements taken from: matelem_radius_r2_1b.bin"
+  j = j + 1
+endif
 
 inquire(file="matelem_radius_r1r2_2b.bin", exist=is_exist)
-if ( is_exist ) print "(a)", "Matrix elements taken from: &
-                             &matelem_radius_r1r2_2b.bin"
+if ( is_exist ) then 
+  print "(a)", "Matrix elements taken from: matelem_radius_r1r2_2b.bin"
+  j = j + 1
+endif
+
+if ( j > 0 ) print*, ''
 
 end subroutine detect_files_operators
 
