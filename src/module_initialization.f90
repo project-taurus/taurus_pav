@@ -267,7 +267,6 @@ call print_input
 !cmpi endif
 call check_input
 call open_file_sho
-call open_files_hamiltonian 
 if ( misc_phys == 0 ) call open_files_hamiltonian
 if ( misc_oper == 1 ) call detect_files_operators
 
