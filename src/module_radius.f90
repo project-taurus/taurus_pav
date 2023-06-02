@@ -134,18 +134,19 @@ if ( opt_oper == 1 ) then
     radius_fac1b = radius_fac1b / ( valence_A**2)
 
     !!! Sets the factors: 2-body
-    radius_fac2b(1,-1) = -( 2*valence_A - valence_Z ) * one / ( valence_Z )
-    radius_fac2b(2,-1) = + one
-    radius_fac2b(3,-1) = - one
+    radius_fac2b(1,-1) = +( 2*valence_A - valence_Z ) * one / ( valence_Z )
+    radius_fac2b(2,-1) = - one
+    radius_fac2b(3,-1) = + one
                         
-    radius_fac2b(1, 0) = -( valence_A - valence_Z ) * one / ( valence_Z )
-    radius_fac2b(2, 0) = -( valence_A - valence_N ) * one / ( valence_N )
-    radius_fac2b(3, 0) = - one
+    radius_fac2b(1, 0) = +( valence_A - valence_Z ) * one / ( valence_Z )
+    radius_fac2b(2, 0) = +( valence_A - valence_N ) * one / ( valence_N )
+    radius_fac2b(3, 0) = + one
                         
-    radius_fac2b(1,+1) = + one 
-    radius_fac2b(2,+1) = -( 2*valence_A - valence_N ) * one / ( valence_N )
-    radius_fac2b(3,+1) = - one 
+    radius_fac2b(1,+1) = - one 
+    radius_fac2b(2,+1) = +( 2*valence_A - valence_N ) * one / ( valence_N )
+    radius_fac2b(3,+1) = + one 
 
+    ! Remark: minus sign compated to the paper of Cipollone
     radius_fac2b = radius_fac2b * 2 * hbarmass / ( HO_hw * valence_A**2 )
 
     !!! Sets the fields
@@ -182,7 +183,7 @@ integer, intent(in) :: ndim
 complex(r64), dimension(ndim,ndim), intent(in) :: rhoLR, kappaLR, kappaRL
 complex(r64), intent(out) :: ra2p, ra2n, ra2m
 integer :: hdim, i, j
-complex(r64) :: ra2p_bare, ra2n_bare, ra2_tmp
+complex(r64) :: ra2p_bare, ra2n_bare, ra2_sum
 complex(r64), dimension(ndim/2,ndim/2) :: rho_p, rho_n, A1, A2
 complex(r64), dimension(ndim,ndim) :: A3, A4
 
@@ -221,17 +222,17 @@ if ( is_r1r2 ) then
     call zgemm('n','t',ndim,ndim,ndim,zone,radius_deltaLR(i,:,:),ndim,kappaRL, &
                ndim,zzero,A4(:,:),ndim)
 
-    ra2_tmp = zzero
+    ra2_sum = zzero
     do j = 1, ndim
-      ra2_tmp = A3(j,j) + A4(j,j)
+      ra2_sum = ra2_sum + A3(j,j) + A4(j,j)
     enddo
 
     if ( i == 1 ) then
-      ra2p = ra2p + 0.5d0 * ra2_tmp
+      ra2p = ra2p + 0.5d0 * ra2_sum
     elseif ( i == 2 ) then
-      ra2n = ra2n + 0.5d0 * ra2_tmp
+      ra2n = ra2n + 0.5d0 * ra2_sum
     else
-      ra2m = ra2m + 0.5d0 * ra2_tmp
+      ra2m = ra2m + 0.5d0 * ra2_sum
     endif
   enddo
 endif
