@@ -943,10 +943,10 @@ endif
 jmin0 = amp_2jmin
 jmax0 = amp_2jmax
 
-jmin1 = min(abs(amp_2jmin-2),abs(min(amp_2jmin+2,amp_2jmax)-2))
+jmin3 = min(amp_2jmin,abs(amp_2jmin-2),abs(amp_2jmax-2))
 jmax1 = amp_2jmax + 2
 
-jmin3 = min(abs(amp_2jmin-6),abs(min(amp_2jmin+6,amp_2jmax)-6))
+jmin3 = min(amp_2jmin,abs(amp_2jmin-6),abs(amp_2jmax-6))
 jmax3 = amp_2jmax + 6
 
 if ( is_good_J(1) ) then
