@@ -861,7 +861,7 @@ end subroutine check_symmetries
 !------------------------------------------------------------------------------!  
 subroutine check_compatibilities
 
-integer :: ierror, jmin0, jmin1, jmin3, jmax0, jmax1, jmax3
+integer :: ierror, l, jmin0, jmin1, jmin3, jmax0, jmax1, jmax3
 
 !!! Counter for the number of errors (should be 0 at the end)
 ierror = 0
@@ -943,10 +943,13 @@ endif
 jmin0 = amp_2jmin
 jmax0 = amp_2jmax
 
-jmin3 = min(amp_2jmin,abs(amp_2jmin-2),abs(amp_2jmax-2))
+jmin1 = min(amp_2jmin,abs(amp_2jmin-2),abs(amp_2jmax-2))
 jmax1 = amp_2jmax + 2
 
-jmin3 = min(amp_2jmin,abs(amp_2jmin-6),abs(amp_2jmax-6))
+jmin3 = amp_2jmin
+do l = 2, 6, 2
+  jmin3 = min(jmin3,abs(amp_2jmin-l),abs(amp_2jmax-l))
+enddo
 jmax3 = amp_2jmax + 6
 
 if ( is_good_J(1) ) then
