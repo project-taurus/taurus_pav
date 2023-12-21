@@ -17,6 +17,7 @@ nprocess=4
 
 heredir=$(pwd)
 heredir=$(pwd)
+resdir=$heredir/results 
 outdir=$heredir/out
 wrkdir=$heredir/wrk
 exedir=$heredir/../../exe
@@ -25,6 +26,7 @@ intdir=$heredir/../../int
 
 code=taurus_pav.exe
 
+if [ ! -d $resdir ]; then mkdir $resdir; fi 
 if [ ! -d $outdir ]; then mkdir $outdir; fi 
 if [ ! -d $wrkdir ]; then mkdir $wrkdir; fi 
 
@@ -75,7 +77,7 @@ do
       ./$code < input.txt > results
     fi 
   
-    mv results $heredir/results_$fileelm 
+    mv results $resdir/results_$fileelm 
     mv projmatelem_states.bin $outdir/${fileelm}_projmatelem_states.bin
     mv projmatelem_M1.bin     $outdir/${fileelm}_projmatelem_M1.bin
     mv projmatelem_E2.bin     $outdir/${fileelm}_projmatelem_E2.bin
@@ -86,6 +88,7 @@ do
 done
     
 echo "The results can be found in the files: results_*, out/*txt"
+echo "They can be compared to the benchmark calculation: diff -r results/ data/results_benchmark/"
 
 # Clean up
 rm -f $code $inter.sho $inter.red input.txt 

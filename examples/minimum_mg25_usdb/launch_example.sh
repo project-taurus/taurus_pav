@@ -54,6 +54,7 @@ else
 fi 
     
 echo "The results can be found in the files: results, out/*txt"
+echo "They can be compared to the benchmark calculation: diff results data/results_benchmark"
 
 # Clean up
 rm -f $code $inter.sho $inter.red input.txt left_wf.bin right_wf.bin

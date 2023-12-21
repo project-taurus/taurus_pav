@@ -37,7 +37,7 @@ subroutine print_version
 print '(" __________________________________________________________ ",/, &
       & "|                                                          |",/, &
       & "|  (______)                                                |",/, &
-      & "|  <(0  0)>   TAURUS_pav, version 2023.06.02               |",/, &
+      & "|  <(0  0)>   TAURUS_pav, version 2023.12.21               |",/, &
       & "|    (°°)                                                  |",/, &
       & "|                                                          |",/, &
       & "| This code performs the symmetry projections (N,Z,J,MJ,P) |",/, &
@@ -46,7 +46,7 @@ print '(" __________________________________________________________ ",/, &
       & "| basis.                                                   |",/, &
       & "|                                                          |",/, &
       & "| Licence: GNU General Public License version 3 or later   |",/, &
-      & "| DOI: https://doi.org/10.5281/zenodo.XXXXXXX              |",/, &
+      & "| DOI: 10.5281/zenodo.XXXXXXX (after first deposit)        |",/, &
       & "| Git: https://github.com/project-taurus/taurus_pav.git    |",/, &
       & "|                                                          |",/, &
       & "| Contributors: B. Bally, T. Rodríguez                     |",/, &
