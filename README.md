@@ -1,7 +1,7 @@
 # TAURUS_pav 
 
-<!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6906647.svg)](https://doi.org/10.5281/zenodo.6906647) -->
-<!-- [![License: GPL v3](https://img.shields.io/github/license/project-taurus/taurus_vap)](https://www.gnu.org/licenses/gpl-3.0) -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10420261.svg)](https://doi.org/10.5281/zenodo.10420261)
+[![License: GPL v3](https://img.shields.io/github/license/project-taurus/taurus_mix)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Presentation
 We present the numerical code TAURUS_pav that computes projected expectation values of various operators between two real general Bogoliubov quasi-particle states represented in a

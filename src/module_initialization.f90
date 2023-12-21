@@ -46,7 +46,7 @@ print '(" __________________________________________________________ ",/, &
       & "| basis.                                                   |",/, &
       & "|                                                          |",/, &
       & "| Licence: GNU General Public License version 3 or later   |",/, &
-      & "| DOI: 10.5281/zenodo.XXXXXXX (after first deposit)        |",/, &
+      & "| DOI: 10.5281/zenodo.10420261                             |",/, &
       & "| Git: https://github.com/project-taurus/taurus_pav.git    |",/, &
       & "|                                                          |",/, &
       & "| Contributors: B. Bally, T. Rodríguez                     |",/, &
