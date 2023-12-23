@@ -133,11 +133,10 @@ In particular, the results we obtained performing these calculations can be foun
 ## Citation
 If you use this code in your research work and publications, please cite us:
 
-> B. Bally, Adrían Sánchez-Fernández, Vimal Vijayan and Tomás R. Rodríguez  
+> B. Bally and Tomás R. Rodríguez  
 > Symmetry-projected variational calculations with the numerical suite TAURUS  
-> II. Configuration mixing of symmetry-projected Bogoliubov quasi-particle states 
-> Journal to be added <!-- Eur. Phys. J. A 57, 69 (2021) -->  
-> DOI of article to be added <!-- https://doi.org/10.1140/epja/s10050-021-00369-z -->
+> II. Configuration mixing of symmetry-projected states  
+> In preparation
 
 ## Additional informations
 
@@ -151,8 +150,6 @@ https://cordis.europa.eu/project/id/839847
 ### Contributors 
 For the time being, the people that contributed to the code are:
 * Benjamin Bally (CEA Paris-Saclay)
-* Tomás R. Rodríguez Frutos (Universidad Autónoma de Madrid)
-* Adrián Sánchez-Fernández (University of York)
-* Vimal Vijayan (GSI Helmholtz Centre for Heavy Ion Research)
+* Tomás R. Rodríguez Frutos (Universidad Complutense de Madrid)
 
 We also thank the people that helped us benchmark and test the code in its early versions.
