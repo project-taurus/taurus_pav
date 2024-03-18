@@ -133,10 +133,12 @@ In particular, the results we obtained performing these calculations can be foun
 ## Citation
 If you use this code in your research work and publications, please cite us:
 
-> B. Bally and Tomás R. Rodríguez  
 > Symmetry-projected variational calculations with the numerical suite TAURUS  
-> II. Configuration mixing of symmetry-projected states  
-> In preparation
+> II. Configuration mixing of symmetry-projected reference states  
+> B. Bally, T. R. Rodríguez  
+> Eur. Phys. J. A 60, 62 (2024)   
+> https://doi.org/10.1140/epja/s10050-024-01271-0
+
 
 ## Additional informations
 
