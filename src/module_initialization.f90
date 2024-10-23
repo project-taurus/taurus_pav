@@ -407,6 +407,7 @@ end subroutine print_input
 !!! Miscellaneous   
 !cmpi call mpi_bcast(misc_phys,1,mpi_integer,0,mpi_comm_world,ierr)
 !cmpi call mpi_bcast(misc_part,1,mpi_integer,0,mpi_comm_world,ierr)
+!cmpi call mpi_bcast(misc_oper,1,mpi_integer,0,mpi_comm_world,ierr)
 !cmpi call mpi_bcast(misc_frot,1,mpi_integer,0,mpi_comm_world,ierr)
 !cmpi call mpi_bcast(misc_cutrot,1,mpi_double_precision,0,mpi_comm_world,ierr)
 !cmpi call mpi_bcast(seed_text,1,mpi_integer,0,mpi_comm_world,ierr)

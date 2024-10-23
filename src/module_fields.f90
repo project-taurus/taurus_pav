@@ -99,6 +99,8 @@ do kk = 1, hamil_H2dim
   h2b = hamil_H2(kk)
   perm = hamil_trperm(kk)
 
+
+
   !!! Loop on time reversal
   do it = 1, 2 
     if ( it == 2 ) then
@@ -106,6 +108,12 @@ do kk = 1, hamil_H2dim
       call find_timerev(perm,ia,ib,ic,id)
       h2b = sign(one,perm*one) * h2b
     endif
+
+  print*,"kk",kk
+  print*,"ia,ic,id,ib",ia,ic,id,ib
+  print*,"ia,id,ic,ib",ia,id,ic,ib
+  print*,"ic,ia,ib,id",ic,ia,ib,id
+  print*,"ic,ib,ia,id",ic,ib,ia,id
 
     !!! Faster than using if ((a /= c).or.(b /= d))
     f2b = h2b * (1 - kdelta(ia,ic) * kdelta(ib,id))
@@ -123,6 +131,8 @@ do kk = 1, hamil_H2dim
   enddo
 enddo
 !$OMP END PARALLEL DO
+
+stop
 
 !!! Reduces the values for the processes in the same team                        
 !cmpi if ( paral_myteamsize > 1 ) then
