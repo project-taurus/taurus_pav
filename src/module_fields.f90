@@ -109,12 +109,6 @@ do kk = 1, hamil_H2dim
       h2b = sign(one,perm*one) * h2b
     endif
 
-  print*,"kk",kk
-  print*,"ia,ic,id,ib",ia,ic,id,ib
-  print*,"ia,id,ic,ib",ia,id,ic,ib
-  print*,"ic,ia,ib,id",ic,ia,ib,id
-  print*,"ic,ib,ia,id",ic,ib,ia,id
-
     !!! Faster than using if ((a /= c).or.(b /= d))
     f2b = h2b * (1 - kdelta(ia,ic) * kdelta(ib,id))
 
