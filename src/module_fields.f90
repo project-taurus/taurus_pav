@@ -126,8 +126,6 @@ do kk = 1, hamil_H2dim
 enddo
 !$OMP END PARALLEL DO
 
-stop
-
 !!! Reduces the values for the processes in the same team                        
 !cmpi if ( paral_myteamsize > 1 ) then
 !cmpi   call mpi_reduce(gammaLR,gammaLR_red,ndim**2,mpi_double_complex, &        

@@ -37,7 +37,7 @@ subroutine print_version
 print '(" __________________________________________________________ ",/, &
       & "|                                                          |",/, &
       & "|  (______)                                                |",/, &
-      & "|  <(0  0)>   TAURUS_pav, version 2024.12.02               |",/, &
+      & "|  <(0  0)>   TAURUS_pav, version 2024.12.09               |",/, &
       & "|    (°°)                                                  |",/, &
       & "|                                                          |",/, &
       & "| This code performs the symmetry projections (N,Z,J,MJ,P) |",/, &
